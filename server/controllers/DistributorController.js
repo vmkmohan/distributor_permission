@@ -102,7 +102,6 @@ exports.isExcluded = (excludes, reqBody)=>{
     return new Promise((resolve, reject)=>{
         if(excludes.length>0){
             const data =_.find(excludes, (x)=>{
-                console.log(reqBody, x)
                 if((!x.city) && (!x.state) && x.country == reqBody.country){
                     return true
                 }else if(!x.city && reqBody.state == x.state && x.country == reqBody.country){
@@ -111,7 +110,6 @@ exports.isExcluded = (excludes, reqBody)=>{
                     return true
                 }
             });
-            console.log(data);
             if(data){
                 reject();
             }else{
